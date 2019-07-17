@@ -1,0 +1,49 @@
+<div>
+  <mat-form-field>
+    <input matInput type="text" (keyup)="doFilter($event.target.value)" placeholder="Filter">
+  </mat-form-field>
+</div>
+
+<table mat-table [dataSource]="dataSource" matSort>
+  <ng-container matColumnDef="Name">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="EmailId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Email Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.emailId}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="DOB">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> DOB </th>
+    <td mat-cell *matCellDef="let element"> {{element.dob}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="Gender">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Gender </th>
+    <td mat-cell *matCellDef="let element"> {{element.gender}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="PhoneNo">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone No </th>
+    <td mat-cell *matCellDef="let element"> {{element.phoneNo}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="UserId">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> UserId </th>
+    <td mat-cell *matCellDef="let element"> {{element.user_id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="Send">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Send</th>
+    <td mat-cell *matCellDef="let element" (click)="onSend(element)"> <button mat-button>
+        <mat-icon aria-label="Menu" class="material-icons">send</mat-icon>
+      </button> </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSize]="10" [pageSizeOptions]="[10, 20, 30]">
+</mat-paginator>

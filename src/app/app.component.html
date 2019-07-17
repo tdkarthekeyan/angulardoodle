@@ -1,0 +1,58 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+    <mat-toolbar color="primary">
+      <span class="toolbar-filler"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
+        [hidden]="!sidenav.opened">
+        <mat-icon aria-label="Menu" class="material-icons">keyboard_arrow_left</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/login']" (click)="sidenav.toggle()" *ngIf="!isLoggedIn()">
+        <mat-icon mat-list-icon>perm_identity</mat-icon>
+        <span class="title" mat-line>{{ getName() }}</span>
+      </a>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/data-table']" (click)="sidenav.toggle()"
+        *ngIf="isLoggedIn()">
+        <mat-icon mat-list-icon>format_list_bulleted</mat-icon>
+        <span class="title" mat-line>Friend Request List</span>
+      </a>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/send-request']" (click)="sidenav.toggle()"
+        *ngIf="isLoggedIn()">
+        <mat-icon mat-list-icon>send</mat-icon>
+        <span class="title" mat-line>Send Friend Request</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar id="appToolbar" color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button"
+      [hidden]="sidenav.opened">
+      <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+    </button>
+    <h1 class="component-title">
+      <a class="title-link" (click)="onTitleClick()">{{ title }}</a>
+    </h1>
+    <span class="toolbar-filler"></span>
+    <button id="button-login" mat-button (click)="onIdentityClick()">
+      <mat-icon aria-label="Menu" class="material-icons">perm_identity</mat-icon>
+      {{ getName() }}
+    </button>
+
+    <button id="button-logout" mat-icon-button (click)="logout()" class="mat-icon-button" *ngIf="isLoggedIn()">
+      <mat-icon aria-label="Menu" class="material-icons">power_settings_new</mat-icon>
+      Logout
+    </button>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>
+
+<!--The content below is only a placeholder and can be replaced.-->
+<!-- <mat-toolbar color="primary">
+   <mat-toolbar-row>
+      <span><a href="/">HOME</a></span>
+      <span class="spacer"></span>
+      <a  mat-button  routerLink="/register">Register</a>
+      <a  mat-button  routerLink="/login">Login</a>
+   </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet> -->

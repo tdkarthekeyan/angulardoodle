@@ -1,0 +1,56 @@
+<mat-toolbar>
+  <span>Add User</span>
+</mat-toolbar>
+<mat-card class="my-card">
+  <mat-card-content>
+    <form [formGroup]="userForm" autocomplete="off" novalidate class="my-form">
+      <mat-form-field class="full-width">
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" formControlName="name" required />
+        <mat-hint>Not more then 20 characters long.</mat-hint>
+        <mat-error *ngIf="hasError('name', 'required')">Name is required</mat-error>
+        <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 20 characters</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Phonenumber</mat-label>
+        <input matInput placeholder="Phonenumber" formControlName="PhoneNo" required />
+        <mat-hint>Not more then 10 characters long.</mat-hint>
+        <mat-error *ngIf="hasError('PhoneNo', 'required')">Phonenumber is required</mat-error>
+        <mat-error *ngIf="hasError('PhoneNo', 'maxlength')">You have more than 10 characters</mat-error>
+        <mat-error *ngIf="hasError('PhoneNo', 'pattern')">Invalid Phonenumber</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="Email" formControlName="emailId" required />
+        <mat-hint>Not more then 10 characters long.</mat-hint>
+        <mat-error *ngIf="hasError('emailId', 'required')">Email is required</mat-error>
+        <mat-error *ngIf="hasError('emailId', 'pattern')">Invalid Email</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Password</mat-label>
+        <input matInput placeholder="Password" formControlName="password" required />
+        <mat-hint>Not more then 10 characters long.</mat-hint>
+        <mat-error *ngIf="hasError('password', 'required')">Password is required</mat-error>
+        <mat-error *ngIf="hasError('password', 'maxlength')">You have more than 10 characters</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>DOB</mat-label>
+        <input matInput placeholder="Date Of Birth" formControlName="dob" required />
+        <mat-error *ngIf="hasError('dob', 'required')">DOB is required</mat-error>
+        <mat-error *ngIf="hasError('dob', 'maxlength')">You have more than 20 characters</mat-error>
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Gender</mat-label>
+        <input matInput placeholder="Gender" formControlName="gender" required />
+        <mat-hint>Not more then 15 characters long.</mat-hint>
+        <mat-error *ngIf="hasError('gender', 'required')">Level is required</mat-error>
+        <mat-error *ngIf="hasError('gender', 'maxlength')">You have more than 15 characters</mat-error>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" [disabled]="!userForm.valid" (click)="addUser(userForm.value)">Add
+      User</button>
+    <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+  </mat-card-actions>
+</mat-card>
