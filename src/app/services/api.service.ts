@@ -10,8 +10,8 @@ export class ApiService {
   userName: string;
   emailId: string;
   user_id: number;
-  // public base = 'https://voxit.herokuapp.com/';
-  public base = 'http://localhost:84/';
+  public base = 'https://doodleblueapp.herokuapp.com/';
+  // public base = 'http://localhost:84/';
   public auth = 'auth/';
   public baseAndAuth = this.base + this.auth;
 
